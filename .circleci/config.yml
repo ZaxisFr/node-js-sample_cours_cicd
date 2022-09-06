@@ -18,7 +18,7 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: docker build --tag ci-cours .
-      - run: docker run -d -p 8080:8081 
+      - run: docker run -d -p 8080:8081 ci-cours
       
 
 # Invoke jobs via workflows
