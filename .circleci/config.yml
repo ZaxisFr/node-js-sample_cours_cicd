@@ -8,7 +8,7 @@ jobs:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      - image: cimg/base:2022.03
+      - image: cimg/base:2022.08
         auth:
           username: nkrattinger
           password: $DOCKERHUB_PASSWORD  # context / project
@@ -16,6 +16,7 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
+      - setup_remote_docker
       - run: docker build --tag ci-cours .
       - run: docker run -d -p 8080:8081 
       
