@@ -33,4 +33,3 @@ workflows:
   run-workflow:
     jobs:
       - run-app
-      - push
