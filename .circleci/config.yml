@@ -22,7 +22,7 @@ jobs:
           name : "Test access"
           command: |
             docker run -d --name ci-cours -p 8080:8080 ci-cours
-            docker exec ci-cours curl --retry 10 --retry-connrefused http://localhost:8080
+            docker exec ci-cours hostname
 
 workflows:
   run-workflow:
