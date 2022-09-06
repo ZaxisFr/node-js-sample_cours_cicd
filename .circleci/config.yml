@@ -23,39 +23,11 @@ jobs:
           command: |
             docker run -d --name ci-cours -p 8080:8080 ci-cours
             docker run --network container:ci-cours appropriate/curl --retry 10 --retry-connrefused http://localhost:8080
-      - run:  docker push ci-cours:latest
-
-      - push:
-          # Build needs to finish first
-          requires:
-            - build
-          # Only push images from the main branch
-          filters:
-            branches:
-              only: main
-
-  push:
-    # Use docker-publisher from above as the Docker container to run this job in
-    executor: docker-publisher
-
-    steps:
-      # Set up a separate Docker environment to run `docker` commands in
-      - setup_remote_docker
-
-      # Load and un-archive the Docker image
-      - attach_workspace:
-          at: /tmp/workspace
       - run:
-          name: CI-Cours
-          command: docker load --input /tmp/workspace/image.tar
-
-      # Log in to Docker Hub and push the image
-      - run:
-          name: Publish Docker image
+          name: Publish Docker Image to Docker Hub
           command: |
-            echo "${$DOCKERHUB_PASSWORD}" | docker login --username "nkrattinger" --password-stdin
-            docker push "${ci-cours}"
-
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "nkrattinger" --password-stdin
+            docker push nkrattinger/ci-cours:latest
 
 workflows:
   run-workflow:
