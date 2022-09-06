@@ -1,0 +1,5 @@
+.git
+.circleci
+node_modules
+.dockerignore
+README.md
