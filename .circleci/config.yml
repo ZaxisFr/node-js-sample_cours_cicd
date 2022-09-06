@@ -27,7 +27,7 @@ jobs:
           name: Publish Docker Image to Docker Hub
           command: |
             echo "$DOCKERHUB_PASSWORD" | docker login -u "nkrattinger" --password-stdin
-            docker push nkrattinger/ci-cours:latest
+            docker push ci-cours:latest
 
 workflows:
   run-workflow:
