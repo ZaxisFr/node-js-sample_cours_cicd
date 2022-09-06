@@ -17,17 +17,17 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run: docker build --tag nkrattinger/ci-cours .
+      - run: docker build --tag $DOCKERHUB_LOGIN/ci-cours .
       - run:
-          name : "Test access"
+          name : "Deploy and test access"
           command: |
-            docker run -d --name ci-cours -p 8080:8080 nkrattinger/ci-cours
+            docker run -d --name ci-cours -p 8080:8080 $DOCKERHUB_LOGIN/ci-cours
             docker run --network container:ci-cours appropriate/curl --retry 10 --retry-connrefused http://localhost:8080
       - run:
-          name: Publish Docker Image to Docker Hub
+          name: "Publish Docker Image to Docker Hub"
           command: |
-            echo "$DOCKERHUB_PASSWORD" | docker login -u "nkrattinger" --password-stdin
-            docker push nkrattinger/ci-cours:latest
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_LOGIN" --password-stdin
+            docker push $DOCKERHUB_LOGIN/ci-cours:latest
 
 workflows:
   run-workflow:
