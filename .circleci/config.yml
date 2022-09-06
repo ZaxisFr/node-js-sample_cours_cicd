@@ -23,7 +23,7 @@ jobs:
           command: |
             docker run -d --name ci-cours -p 8080:8080 ci-cours
             docker run --network container:ci-cours appropriate/curl --retry 10 --retry-connrefused http://localhost:8080
-
+      - run:  docker push ci-cours:latest
 workflows:
   run-workflow:
     jobs:
