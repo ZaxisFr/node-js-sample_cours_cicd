@@ -19,7 +19,7 @@ jobs:
       - setup_remote_docker
       - run: docker build --tag ci-cours .
       - run: docker run -d -p 8080:8080 ci-cours
-      - run: curl http://localhost:8080/
+      - run: bash -c "curl http://localhost:8080"
 
 
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
