@@ -21,8 +21,8 @@ jobs:
       - run:
           name : "Test access"
           command: |
-            docker run -d --name nkrattinger/ci-cours -p 8080:8080 nkrattinger/ci-cours
-            docker run --network container:nkrattinger/ci-cours appropriate/curl --retry 10 --retry-connrefused http://localhost:8080
+            docker run -d --name ci-cours -p 8080:8080 nkrattinger/ci-cours
+            docker run --network container:ci-cours appropriate/curl --retry 10 --retry-connrefused http://localhost:8080
       - run:
           name: Publish Docker Image to Docker Hub
           command: |
