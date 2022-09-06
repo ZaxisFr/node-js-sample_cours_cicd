@@ -21,9 +21,8 @@ jobs:
       - run: docker run -d --name ci-cours-cnt -p 8080:8080 ci-cours
       - run:
           name : "Test access"
-          command: | 
-            docker exec ci-cours-cnt curl http://localhost:8080
-
+          command: |
+            docker exec ci-cours-cnt curl --retry 10 --retry-connrefused http://localhost:8080
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   run-workflow:
