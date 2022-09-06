@@ -1,5 +1,5 @@
 {
-  "name": "node-js-sample",
+  "name": "js-sample",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -13,5 +13,19 @@
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "description": "Sample NodeJS Express app",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZaxisFr/node-js-sample_cours_cicd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZaxisFr/node-js-sample_cours_cicd/issues"
+  },
+  "homepage": "https://github.com/ZaxisFr/node-js-sample_cours_cicd#readme"
 }
